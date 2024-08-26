@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="/maplestorym/v1/character/vmatrix"></script>
+    <script>
+        var api_url = 'https://open.api.nexon.com/maplestorym/v1/id';
+        let api_key = 'test_064bea213ae0c3b41a5cbf53c552eb21478769433838a04c8d49ef92e3e97235efe8d04e6d233bd35cf2fabdeb93fb0d';
+
+        $(document).ready(function(){
+            $('#btn').click(function(){
+                let characterName = $("#nm").val();
+
+                $.ajax({
+                    url: api_url,
+                    type: "GET",
+                    dataType: "json", // returnType
+                    headers : {'x-nxopen-api-key': 'test_064bea213ae0c3b41a5cbf53c552eb21478769433838a04c8d49ef92e3e97235efe8d04e6d233bd35cf2fabdeb93fb0d'},
+                    data:{
+                        character_name: '꼬마윈브',
+                        world_name: '엘리시움'
+                    }, success: function(res){
+                       console.log(res);    
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" id="nm" value="캐릭터명">
+    <button id="btn">입력</button>
+</body>
+</html>
+
+
+
+<!-- success: function(res){
+                        // element를 찾는 find로 xml의 태그도 찾을 수 있음
+                        console.log(res);
+                        $(res).find("item").each(function(i, v){
+                            let nm = $(v).find('name').text();
+                            let lat = $(v).find('lat').text(); // 위도
+                            let lon = $(v).find('lon').text(); // 경도
+                            addr.push({"title": nm, "lat": lat, "lon": lon});
+                        });
+                    }
