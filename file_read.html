@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery file</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: "./dataset/mbti/MBTI_A.csv",
+                dataType: "text",
+                success: function(data){
+                    console.log(data);
+                }, error: function(e){
+                    console.log(e);
+                }
+            });
+            console.log("===============");
+            // get 전용
+            //$.getJSON("./dataset/mbti/MBTI_A.csv", function(data){
+            //    console.log(data);
+            //    console.log("===============");
+            //});
+            // javascript fetch
+            fetch("./dataset/mbti/MBTI_A.csv").then(function(res){
+                console.log(res.text());
+                console.log("===============");
+            });
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
